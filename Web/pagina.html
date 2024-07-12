@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador de Promedio de Calificaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin: 5px 0;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculador de Promedio de Calificaciones</h1>
+        <div id="inputs">
+            <input type="number" placeholder="Ingresa una calificación" />
+        </div>
+        <button onclick="addInput()">Añadir otra calificación</button>
+        <button onclick="calculateAverage()">Calcular Promedio</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function addInput() {
+            const inputsDiv = document.getElementById('inputs');
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.placeholder = 'Ingresa una calificación';
+            inputsDiv.appendChild(input);
+        }
+
+        function calculateAverage() {
+            const inputs = document.querySelectorAll('#inputs input');
+            let sum = 0;
+            let count = 0;
+
+            inputs.forEach(input => {
+                const value = parseFloat(input.value);
+                if (!isNaN(value)) {
+                    sum += value;
+                    count++;
+                }
+            });
+
+            const average = count > 0 ? (sum / count).toFixed(2) : 0;
+            document.getElementById('result').textContent = `El promedio de las calificaciones es: ${average}`;
+        }
+    </script>
+
+</body>
+</html>
