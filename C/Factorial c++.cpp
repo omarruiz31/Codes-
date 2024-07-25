@@ -12,7 +12,7 @@ int factorial(int n) {
 
 int main() {
     int num;
-    std::cout << "Ingrese un número para calcular su factorial: ";
+    std::cout << "Ingrese un numero para calcular su factorial: ";
     std::cin >> num;
 
     // Verificación para números negativos
